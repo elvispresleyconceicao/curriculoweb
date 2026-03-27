@@ -1,396 +1,386 @@
 <!DOCTYPE html>
+<!-- Declara que este documento segue o padrão HTML5 -->
 <html lang="pt-BR">
+<!-- Define o idioma principal da página como português do Brasil -->
 <head>
+    <!-- Início da seção de metadados e configurações do documento -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define a codificação de caracteres como UTF-8, permitindo acentuação e caracteres especiais -->
+    <meta charset="UTF-8">
+    <!-- Configura a viewport para tornar a página responsiva em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece na aba do navegador -->
+    <title>Quem sou Eu</title>
+    <!-- Importa a biblioteca de ícones Font Awesome versão 6.5.0 para uso dos ícones sociais e de interface -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Início do CSS interno, com todas as regras de estilo da página -->
+    <style>
+        /* ==================== RESET CSS ==================== */
+        /* Remove margens e paddings padrão de todos os elementos e define box-sizing border-box,
+           que faz com que padding e borda sejam incluídos na largura/altura total do elemento */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Quem sou Eu</title>
+        /* ==================== CONFIGURAÇÃO GLOBAL ==================== */
+        /* Estilos aplicados ao corpo da página, herdados por elementos internos */
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Define uma família de fontes segura */
+            background: white; /* Cor de fundo padrão (branco) */
+            color: #333; /* Cor do texto padrão (cinza escuro) */
+            line-height: 1.6; /* Altura da linha para melhor legibilidade */
+            padding: 30px; /* Espaçamento interno ao redor do conteúdo principal */
+            transition: 0.4s; /* Transição suave para mudanças de estilo, como dark mode */
+        }
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        /* ==================== CONTAINER PRINCIPAL ==================== */
+        /* Centraliza o conteúdo e limita a largura máxima em telas grandes */
+        .container {
+            max-width: 1100px; /* Largura máxima do conteúdo */
+            margin: auto; /* Centraliza horizontalmente */
+        }
 
-<style>
+        /* ==================== CABEÇALHO ==================== */
+        /* Estiliza o cabeçalho com flexbox para alinhar texto e avatar */
+        header {
+            display: flex; /* Ativa o Flexbox */
+            justify-content: space-between; /* Espaça os itens (título e avatar) nas extremidades */
+            align-items: center; /* Alinha verticalmente ao centro */
+            flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte em telas pequenas */
+            margin-bottom: 40px; /* Espaço inferior em relação ao conteúdo principal */
+        }
 
-/* RESET */
+        /* Estilo do título principal (nome) */
+        header h1 {
+            font-size: 2.5rem; /* Tamanho grande e responsivo */
+            color: black; /* Cor preta */
+            border-bottom: 4px solid gold; /* Linha decorativa dourada abaixo do título */
+            padding-bottom: 6px; /* Espaço entre o texto e a borda inferior */
+            display: inline-block; /* Faz a borda se ajustar apenas ao tamanho do texto */
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        /* Estilo do subtítulo (áreas de atuação) */
+        header h2 {
+            font-size: 1rem; /* Tamanho padrão */
+            font-weight: normal; /* Remove o negrito padrão */
+            margin-top: 10px; /* Espaço acima do subtítulo */
+            color: #555; /* Tom de cinza mais suave */
+        }
 
-/* CONFIGURAÇÃO GLOBAL */
+        /* ==================== AVATAR ==================== */
+        /* Container da imagem de perfil (formato circular) */
+        .avatar {
+            width: 160px; /* Largura fixa */
+            height: 160px; /* Altura fixa */
+            border-radius: 50%; /* Transforma o quadrado em círculo */
+            overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do círculo */
+            border: 3px solid gold; /* Borda dourada ao redor do avatar */
+        }
 
-body{
-font-family:Arial, Helvetica, sans-serif;
-background:white;
-color:#333;
-line-height:1.6;
-padding:30px;
-transition:0.4s;
-}
+        /* Estilo da imagem interna do avatar */
+        .avatar img {
+            width: 100%; /* Ocupa toda a largura do container */
+            height: 100%; /* Ocupa toda a altura do container */
+            object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer (pode cortar bordas) */
+        }
 
-/* CONTAINER */
+        /* ==================== TEXTO PRINCIPAL ==================== */
+        /* Estiliza os parágrafos da seção principal */
+        main p {
+            text-align: justify; /* Justifica o texto para alinhamento nas duas bordas */
+            margin-bottom: 20px; /* Espaço entre parágrafos */
+            font-size: 1.05rem; /* Tamanho ligeiramente maior que o padrão */
+        }
 
-.container{
-max-width:1100px;
-margin:auto;
-}
+        /* ==================== SEÇÃO DE HABILIDADES ==================== */
+        .habilidades {
+            margin-top: 20px; /* Espaço superior para separar das descrições */
+        }
 
-/* CABEÇALHO */
+        /* Estilo da lista de habilidades (herda os estilos de lista padrão, apenas ajusta o recuo) */
+        .habilidades ul {
+            padding-left: 20px; /* Recuo à esquerda para os itens da lista */
+        }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-margin-bottom:40px;
-}
+        /* ==================== ÁREA DOS BOTÕES ==================== */
+        .btn-area {
+            margin-top: 30px; /* Espaço acima dos botões */
+        }
 
-header h1{
-font-size:2.5rem;
-color:black;
-border-bottom:4px solid gold;
-padding-bottom:6px;
-display:inline-block;
-}
+        /* ==================== BOTÃO CURRÍCULO (IMPRESSÃO) ==================== */
+        .btn-cv {
+            background: black; /* Fundo preto */
+            color: white; /* Texto branco */
+            padding: 10px 20px; /* Espaçamento interno (vertical/horizontal) */
+            text-decoration: none; /* Remove sublinhado padrão de links */
+            border-radius: 5px; /* Bordas levemente arredondadas */
+            margin-right: 10px; /* Espaço à direita para separar do próximo botão */
+            transition: 0.3s; /* Suaviza a transição de cores no hover */
+        }
 
-header h2{
-font-size:1rem;
-font-weight:normal;
-margin-top:10px;
-color:#555;
-}
+        /* Efeito hover para o botão de currículo */
+        .btn-cv:hover {
+            background: gold; /* Fundo dourado */
+            color: black; /* Texto preto */
+        }
 
-/* AVATAR */
+        /* ==================== BOTÃO IMPRIMIR ==================== */
+        .btn-print {
+            background: black; /* Fundo preto */
+            color: white; /* Texto branco */
+            padding: 10px 20px; /* Mesmo espaçamento do botão de currículo */
+            border-radius: 5px; /* Bordas arredondadas */
+            margin-right: 10px; /* Espaço à direita */
+            transition: 0.3s; /* Transição suave */
+            border: none; /* Remove a borda padrão do botão */
+            cursor: pointer; /* Muda o cursor para indicar interatividade */
+        }
 
-.avatar{
-width:160px;
-height:160px;
-border-radius:50%;
-overflow:hidden;
-border:3px solid gold;
-}
+        /* Efeito hover para o botão de imprimir */
+        .btn-print:hover {
+            background: gold; /* Fundo dourado */
+            color: black; /* Texto preto */
+        }
 
-.avatar img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+        /* ==================== BOTÃO DARK MODE ==================== */
+        .btn-theme {
+            background: gold; /* Fundo dourado */
+            color: black; /* Texto preto */
+            padding: 10px 20px; /* Espaçamento interno consistente */
+            border: none; /* Remove borda padrão */
+            border-radius: 5px; /* Bordas arredondadas */
+            cursor: pointer; /* Cursor de mão */
+            transition: 0.3s; /* Transição suave para hover */
+        }
 
-/* TEXTO */
+        /* Efeito hover para o botão de tema */
+        .btn-theme:hover {
+            opacity: 0.8; /* Reduz a opacidade para indicar interação */
+        }
 
-main p{
-text-align:justify;
-margin-bottom:20px;
-font-size:1.05rem;
-}
+        /* ==================== RODAPÉ COM ÍCONES SOCIAIS ==================== */
+        .social-footer {
+            margin-top: 50px; /* Espaço superior em relação ao conteúdo anterior */
+            padding-top: 20px; /* Espaço interno acima dos ícones */
+            border-top: 2px solid #ddd; /* Linha divisória sutil no topo */
+            text-align: center; /* Centraliza os ícones */
+        }
 
-/* HABILIDADES */
+        /* Estilo dos links de ícones no rodapé */
+        .social-footer a {
+            margin: 0 15px; /* Espaçamento lateral entre os ícones */
+            font-size: 28px; /* Tamanho dos ícones */
+            color: black; /* Cor preta (no modo claro) */
+            transition: 0.3s; /* Suaviza alterações de cor e transformação */
+        }
 
-.habilidades{
-margin-top:20px;
-}
+        /* Efeito hover nos ícones sociais */
+        .social-footer a:hover {
+            color: gold; /* Muda para dourado ao passar o mouse */
+            transform: scale(1.2); /* Aumenta levemente o tamanho */
+        }
 
-.habilidades ul{
-padding-left:20px;
-}
+        /* ==================== SEÇÃO DE CONTATO PARA IMPRESSÃO ==================== */
+        /* Esta seção fica oculta na visualização normal, mas aparece apenas na impressão */
+        .contato-print {
+            display: none; /* Oculta por padrão */
+            margin-top: 30px; /* Espaço superior quando visível */
+        }
 
-/* BOTÕES */
+        /* ==================== DARK MODE ==================== */
+        /* Quando a classe 'dark-mode' é adicionada ao body, esses estilos são aplicados */
+        .dark-mode {
+            background: #121212; /* Fundo escuro */
+            color: #eee; /* Texto claro */
+        }
 
-.btn-area{
-margin-top:30px;
-}
+        /* No modo escuro, o título principal fica branco */
+        .dark-mode header h1 {
+            color: white;
+        }
 
-/* BOTÃO CURRÍCULO */
+        /* No modo escuro, os ícones do rodapé ficam brancos para contraste */
+        .dark-mode .social-footer a {
+            color: white;
+        }
 
-.btn-cv{
-background:black;
-color:white;
-padding:10px 20px;
-text-decoration:none;
-border-radius:5px;
-margin-right:10px;
-transition:0.3s;
-}
+        /* ==================== RESPONSIVIDADE ==================== */
+        /* Media query para telas com largura máxima de 768px (tablets e celulares) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Muda para coluna: título em cima, avatar embaixo */
+                text-align: center; /* Centraliza o texto */
+            }
 
-.btn-cv:hover{
-background:gold;
-color:black;
-}
+            .avatar {
+                margin-top: 20px; /* Espaço acima do avatar para separar do título */
+            }
+        }
 
-/* BOTÃO IMPRIMIR */
+        /* ==================== ESTILOS PARA IMPRESSÃO ==================== */
+        /* Regras aplicadas quando a página é impressa ou visualizada na pré-impressão */
+        @media print {
+            /* Oculta a área de botões na impressão, pois não fazem sentido no papel */
+            .btn-area {
+                display: none;
+            }
 
-.btn-print{
-background:black;
-color:white;
-padding:10px 20px;
-border-radius:5px;
-margin-right:10px;
-transition:0.3s;
-border:none;
-cursor:pointer;
-}
+            /* Oculta os ícones sociais na impressão */
+            .social-footer {
+                display: none;
+            }
 
-.btn-print:hover{
-background:gold;
-color:black;
-}
+            /* Torna visível a seção de contato exclusiva para impressão */
+            .contato-print {
+                display: block;
+            }
 
-/* BOTÃO DARK MODE */
+            /* Remove margens extras do body na impressão */
+            body {
+                margin: 0;
+            }
 
-.btn-theme{
-background:gold;
-color:black;
-padding:10px 20px;
-border:none;
-border-radius:5px;
-cursor:pointer;
-transition:0.3s;
-}
+            /* Ajusta a largura do container para otimizar o papel A4 */
+            .container {
+                max-width: 800px;
+                margin: auto;
+            }
 
-.btn-theme:hover{
-opacity:0.8;
-}
-
-/* RODAPÉ */
-
-.social-footer{
-margin-top:50px;
-padding-top:20px;
-border-top:2px solid #ddd;
-text-align:center;
-}
-
-.social-footer a{
-margin:0 15px;
-font-size:28px;
-color:black;
-transition:0.3s;
-}
-
-.social-footer a:hover{
-color:gold;
-transform:scale(1.2);
-}
-
-/* CONTATO PARA IMPRESSÃO */
-
-.contato-print{
-display:none;
-margin-top:30px;
-}
-
-/* DARK MODE */
-
-.dark-mode{
-background:#121212;
-color:#eee;
-}
-
-.dark-mode header h1{
-color:white;
-}
-
-.dark-mode .social-footer a{
-color:white;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-header{
-flex-direction:column;
-text-align:center;
-}
-
-.avatar{
-margin-top:20px;
-}
-
-}
-
-/* IMPRESSÃO */
-
-@media print{
-
-.btn-area{
-display:none;
-}
-
-.social-footer{
-display:none;
-}
-
-.contato-print{
-display:block;
-}
-
-body{
-margin:0;
-}
-
-.container{
-max-width:800px;
-margin:auto;
-}
-
-p{
-font-size:12pt;
-line-height:1.4;
-}
-
-}
-
-</style>
-
+            /* Define tamanho de fonte e espaçamento dos parágrafos para leitura no papel */
+            p {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+        }
+    </style>
 </head>
-
+<!-- Fim da seção head e início do corpo visível da página -->
 <body>
+    <!-- Container principal que agrupa todo o conteúdo centralizado -->
+    <div class="container">
+        <!-- Cabeçalho da página: contém título, subtítulo e avatar -->
+        <header>
+            <!-- Div para agrupar os textos de título e subtítulo -->
+            <div>
+                <h1>Elvis Presley Ramos Miranda da Conceição</h1>
+                <h2>
+                    Ciência de Dados • Data Analytics • Desenvolvimento de sistemas • Filosofia • Matemática Aplicada • Educação Tecnológica
+                </h2>
+            </div>
+            <!-- Div para o avatar (imagem de perfil) -->
+            <div class="avatar">
+                <!-- Imagem do avatar. Importante: o arquivo deve estar no caminho "img/avatar.jpg" -->
+                <img src="img/avatar.jpg" alt="Avatar">
+            </div>
+        </header>
 
-<div class="container">
+        <!-- Conteúdo principal da página (textos e listas) -->
+        <main>
+            <!-- Primeiro parágrafo de apresentação profissional -->
+            <p>
+                Eu sou profissional com mais de trinta anos de experiência em gestão administrativa e educacional,
+                atualmente em transição para as áreas de Ciência de Dados, desenvolvimento web e análise de dados.
+                Minha formação integra matemática, filosofia e tecnologia, permitindo abordar problemas complexos
+                com pensamento analítico e visão interdisciplinar.
+            </p>
+            <!-- Segundo parágrafo destacando atuação atual -->
+            <p>
+                Atuo no desenvolvimento de projetos educacionais e tecnológicos, produção de conteúdos digitais
+                e ensino de informática e programação. Tenho especial interesse na aplicação de métodos
+                computacionais para análise de dados, otimização de processos e produção de conhecimento
+                científico e educacional.
+            </p>
+            <!-- Terceiro parágrafo sobre interesses e objetivos -->
+            <p>
+                Entre meus interesses estão a produção de conteúdo técnico e filosófico, desenvolvimento de
+                projetos digitais educacionais, investimentos e criação artística em desenho e audiovisual.
+                Busco integrar ciência, tecnologia e educação para gerar soluções inovadoras e ampliar
+                o acesso ao conhecimento.
+            </p>
 
-<header>
+            <!-- Seção que lista as principais habilidades -->
+            <div class="habilidades">
+                <h3>Principais habilidades</h3>
+                <ul>
+                    <li>Análise de dados e pensamento analítico</li>
+                    <li>Programação em Python, JavaScript, PHP e SQL</li>
+                    <li>Desenvolvimento web (HTML, CSS e lógica de programação)</li>
+                    <li>Design de interfaces e experiência do usuário</li>
+                    <li>Comunicação eficaz e trabalho em equipe</li>
+                    <li>Resolução de problemas e pensamento crítico</li>
+                    <li>Educação tecnológica e metodologias de ensino</li>
+                    <li>Gestão de projetos e otimização de processos</li>
+                    <li>Produção de conteúdo técnico e científico</li>
+                </ul>
+            </div>
 
-<div>
+            <!-- Área dos botões de ação -->
+            <div class="btn-area">
+                <!-- Botão que aciona a impressão da página (window.print) -->
+                <button onclick="window.print()" class="btn-print">
+                    <i class="fa-solid fa-print"></i> Imprimir Currículo
+                </button>
+                <!-- Botão que alterna entre os modos claro e escuro (chama a função toggleTheme) -->
+                <button onclick="toggleTheme()" class="btn-theme">
+                    <i class="fa-solid fa-moon"></i> Dark Mode
+                </button>
+            </div>
 
-<h1>Elvis Presley Ramos Miranda da Conceição</h1>
+            <!-- Seção de contato que só aparece na versão impressa -->
+            <section class="contato-print">
+                <h3>Contato</h3>
+                <p>
+                    Email: elvisconceicao@prof.educacao.sp.gov.br<br>
+                    WhatsApp: +55 11 93949-0815<br>
+                    LinkedIn: linkedin.com/in/elvispresleyconceicao<br>
+                    GitHub: github.com/ramospresley<br>
+                    Medium: medium.com/@ramospresley<br>
+                    ORCID: orcid.org/0009-0009-7527-6419
+                </p>
+            </section>
+        </main>
 
-<h2>
-Ciência de Dados • Data Analytics • Desenvolvimento de sistemas • Filosofia • Matemática Aplicada • Educação Tecnológica
-</h2>
+        <!-- Rodapé com ícones de redes sociais e contato -->
+        <footer class="social-footer">
+            <!-- Link para WhatsApp (abre em nova aba) -->
+            <a href="https://wa.me/5511939490815" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <!-- Link para envio de e-mail -->
+            <a href="mailto:elvisconceicao@prof.educacao.sp.gov.br">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <!-- Link para perfil do LinkedIn (atenção: URL possui "ç" e "ã", pode causar problemas; ideal seria usar percent-encoding) -->
+            <a href="http://www.linkedin.com/in/elvispresleyconceição" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <!-- Link para ORCID -->
+            <a href="https://orcid.org/0009-0009-7527-6419" target="_blank">
+                <i class="fa-brands fa-orcid"></i>
+            </a>
+            <!-- Link para GitHub -->
+            <a href="https://github.com/ramospresley" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <!-- Link para Medium -->
+            <a href="https://medium.com/@ramospresley" target="_blank">
+                <i class="fa-brands fa-medium"></i>
+            </a>
+        </footer>
+    </div>
 
-</div>
-
-<div class="avatar">
-<img src="img/avatar.jpg" alt="Avatar">
-</div>
-
-</header>
-
-<main>
-
-<p>
-
-Eu sou profissional com mais de trinta anos de experiência em gestão administrativa e educacional,
-atualmente em transição para as áreas de Ciência de Dados, desenvolvimento web e análise de dados.
-Minha formação integra matemática, filosofia e tecnologia, permitindo abordar problemas complexos
-com pensamento analítico e visão interdisciplinar.
-
-</p>
-
-<p>
-
-Atuo no desenvolvimento de projetos educacionais e tecnológicos, produção de conteúdos digitais
-e ensino de informática e programação. Tenho especial interesse na aplicação de métodos
-computacionais para análise de dados, otimização de processos e produção de conhecimento
-científico e educacional.
-
-</p>
-
-<p>
-
-Entre meus interesses estão a produção de conteúdo técnico e filosófico, desenvolvimento de
-projetos digitais educacionais, investimentos e criação artística em desenho e audiovisual.
-Busco integrar ciência, tecnologia e educação para gerar soluções inovadoras e ampliar
-o acesso ao conhecimento.
-
-</p>
-
-<div class="habilidades">
-
-<h3>Principais habilidades</h3>
-
-<ul>
-
-<li>Análise de dados e pensamento analítico</li>
-<li>Programação em Python, JavaScript, PHP e SQL</li>
-<li>Desenvolvimento web (HTML, CSS e lógica de programação)</li>
-<li>Design de interfaces e experiência do usuário</li>
-<li>Comunicação eficaz e trabalho em equipe</li>
-<li>Resolução de problemas e pensamento crítico</li>
-<li>Educação tecnológica e metodologias de ensino</li>
-<li>Gestão de projetos e otimização de processos</li>
-<li>Produção de conteúdo técnico e científico</li>
-
-</ul>
-
-</div>
-
-<!-- BOTÕES -->
-
-<div class="btn-area">
-
-<button onclick="window.print()" class="btn-print">
-<i class="fa-solid fa-print"></i> Imprimir Currículo
-</button>
-
-<button onclick="toggleTheme()" class="btn-theme">
-<i class="fa-solid fa-moon"></i> Dark Mode
-</button>
-
-</div>
-
-<!-- CONTATO PARA IMPRESSÃO -->
-
-<section class="contato-print">
-
-<h3>Contato</h3>
-
-<p>
-
-Email: elvisconceicao@prof.educacao.sp.gov.br<br>
-WhatsApp: +55 11 93949-0815<br>
-LinkedIn: linkedin.com/in/elvispresleyconceicao<br>
-GitHub: github.com/ramospresley<br>
-Medium: medium.com/@ramospresley<br>
-ORCID: orcid.org/0009-0009-7527-6419
-
-</p>
-
-</section>
-
-</main>
-
-<footer class="social-footer">
-
-<a href="https://wa.me/5511939490815" target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<a href="mailto:elvisconceicao@prof.educacao.sp.gov.br">
-<i class="fa-solid fa-envelope"></i>
-</a>
-
-<a href="http://www.linkedin.com/in/elvispresleyconceição" target="_blank">
-<i class="fa-brands fa-linkedin"></i>
-</a>
-
-<a href="https://orcid.org/0009-0009-7527-6419" target="_blank">
-<i class="fa-brands fa-orcid"></i>
-</a>
-
-<a href="https://github.com/ramospresley" target="_blank">
-<i class="fa-brands fa-github"></i>
-</a>
-
-<a href="https://medium.com/@ramospresley" target="_blank">
-<i class="fa-brands fa-medium"></i>
-</a>
-
-</footer>
-
-</div>
-
-<script>
-
-function toggleTheme(){
-document.body.classList.toggle("dark-mode");
-}
-
-</script>
-
+    <!-- JavaScript para funcionalidades interativas -->
+    <script>
+        /**
+         * Função que alterna a classe 'dark-mode' no elemento <body>.
+         * Quando adicionada, ativa os estilos escuros definidos no CSS.
+         * Quando removida, volta ao estilo claro padrão.
+         */
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
 </body>
 </html>
