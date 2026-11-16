@@ -11,7 +11,7 @@ Esta página pode ser utilizada como base para portfólio pessoal, apresentaçã
 
 Após a publicação com GitHub Pages, o site poderá ser acessado em:
 
-https://ramospresley.github.io/curriculoweb/
+https://elvispresleyconceicao.github.io/curriculoweb/
 
 ---
 
